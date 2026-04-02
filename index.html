@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Claude in Darija</title>
+    <title>Learn Claude in Moroccan Darija</title>
     <style>
         :root {
-            --bg-color: #f7f5f0;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --text-main: #111111;
-            --text-muted: #6b7280;
-            --border-color: #e5e7eb;
+            --text-main: #0f172a;
+            --text-muted: #4b5563;
+            --border-color: #e2e8f0;
+            --accent: #059669; /* Elegant Moroccan Green */
+            --accent-hover: #047857;
             --radius: 16px;
             --transition: all 0.2s ease;
         }
@@ -37,41 +39,47 @@
         .card {
             background-color: var(--card-bg);
             width: 100%;
-            max-width: 420px;
-            padding: 2.5rem 2rem;
+            max-width: 440px;
+            padding: 3rem 2.5rem;
             border-radius: var(--radius);
-            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
             text-align: center;
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 2.25rem;
             font-weight: 800;
             letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .highlight {
+            color: var(--accent);
         }
 
         .subtitle {
             font-size: 1.05rem;
             color: var(--text-muted);
             margin-bottom: 2rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         form {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.875rem;
         }
 
         input[type="email"] {
             width: 100%;
-            padding: 0.875rem 1.25rem;
+            padding: 1rem 1.25rem;
             font-size: 1rem;
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            background-color: #fafafa;
+            background-color: #f9fafb;
             color: var(--text-main);
             outline: none;
             transition: var(--transition);
@@ -83,17 +91,17 @@
 
         input[type="email"]:focus {
             background-color: #ffffff;
-            border-color: var(--text-main);
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
         }
 
         button {
             width: 100%;
-            padding: 0.875rem 1.25rem;
-            font-size: 1rem;
+            padding: 1rem 1.25rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: #ffffff;
-            background-color: var(--text-main);
+            background-color: var(--accent);
             border: none;
             border-radius: 12px;
             cursor: pointer;
@@ -101,9 +109,9 @@
         }
 
         button:hover {
-            background-color: #000000;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(5, 150, 105, 0.25);
         }
 
         button:active {
@@ -117,16 +125,17 @@
         }
 
         .trust-text {
-            font-size: 0.85rem;
+            font-size: 0.875rem;
             color: var(--text-muted);
-            margin-top: 1.25rem;
+            margin-top: 1.5rem;
+            font-weight: 500;
         }
 
         .form-message {
             margin-top: 1rem;
-            padding: 0.875rem;
+            padding: 1rem;
             border-radius: 12px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
             display: none;
             animation: fadeIn 0.3s ease;
@@ -139,9 +148,9 @@
 
         .form-message.success {
             display: block;
-            background-color: #f0fdf4;
-            color: #166534;
-            border: 1px solid #bbf7d0;
+            background-color: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
         }
 
         .form-message.error {
@@ -155,8 +164,8 @@
 <body>
 
     <div class="card">
-        <h1>Learn Claude in Darija.</h1>
-        <p class="subtitle">Build websites, apps, presentations, and more.</p>
+        <h1>Learn Claude in <span class="highlight">Moroccan Darija</span> 🇲🇦</h1>
+        <p class="subtitle">The ultimate guide for your <strong>studies, work, and business</strong>. Build websites, apps, and presentations easily.</p>
         
         <form id="waitlist-form" action="https://formspree.io/f/your-form-id" method="POST">
             <input type="hidden" name="source" value="claude-darija-landing">
