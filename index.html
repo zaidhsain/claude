@@ -1,231 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Claude in Moroccan Darija</title>
-    <style>
-        :root {
-            --bg-color: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #4b5563;
-            --border-color: #e2e8f0;
-            --accent: #059669; /* Elegant Moroccan Green */
-            --accent-hover: #047857;
-            --radius: 16px;
-            --transition: all 0.2s ease;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learn Claude in Moroccan Darija</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+:root {
+    --bg-color: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #4b5563;
+    --border-color: #e2e8f0;
+    --accent: #059669;
+    --accent-hover: #047857;
+    --radius: 16px;
+}
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
 
-        .card {
-            background-color: var(--card-bg);
-            width: 100%;
-            max-width: 440px;
-            padding: 3rem 2.5rem;
-            border-radius: var(--radius);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.05);
-        }
+.card {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+}
 
-        h1 {
-            font-size: 2.25rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
+h1 {
+    font-size: 2rem;
+    font-weight: 800;
+}
 
-        .highlight {
-            color: var(--accent);
-        }
+.highlight {
+    color: var(--accent);
+}
 
-        .subtitle {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
+.subtitle {
+    color: var(--text-muted);
+    margin: 20px 0;
+}
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 0.875rem;
-        }
+input {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
 
-        input[type="email"] {
-            width: 100%;
-            padding: 1rem 1.25rem;
-            font-size: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            background-color: #f9fafb;
-            color: var(--text-main);
-            outline: none;
-            transition: var(--transition);
-        }
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 10px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
 
-        input[type="email"]::placeholder {
-            color: #9ca3af;
-        }
-
-        input[type="email"]:focus {
-            background-color: #ffffff;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(5, 150, 105, 0.1);
-        }
-
-        button {
-            width: 100%;
-            padding: 1rem 1.25rem;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #ffffff;
-            background-color: var(--accent);
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        button:hover {
-            background-color: var(--accent-hover);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(5, 150, 105, 0.25);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .trust-text {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-            margin-top: 1.5rem;
-            font-weight: 500;
-        }
-
-        .form-message {
-            margin-top: 1rem;
-            padding: 1rem;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .form-message.success {
-            display: block;
-            background-color: #ecfdf5;
-            color: #065f46;
-            border: 1px solid #a7f3d0;
-        }
-
-        .form-message.error {
-            display: block;
-            background-color: #fef2f2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
-    </style>
+.message {
+    margin-top: 15px;
+    font-weight: 500;
+}
+</style>
 </head>
+
 <body>
 
-    <div class="card">
-        <h1>Learn Claude in <span class="highlight">Moroccan Darija</span> 🇲🇦</h1>
-       <p class="subtitle">
-    The ultimate guide for your <strong>studies, work, and business</strong>. Build websites, apps, and presentations easily.
-</p>
+<div class="card">
+    <h1>Learn Claude in <span class="highlight">Moroccan Darija</span> 🇲🇦</h1>
 
-<p style="margin-bottom: 1.5rem; font-weight: 600; color: #0f172a;">
-    🚀 testing the idea — join if you are interested:
-</p>
-        
-        <form id="waitlist-form" action="https://formspree.io/f/xzdkvlqp" method="POST">
-            <input type="hidden" name="source" value="claude-darija-landing">
-            <input type="email" name="email" placeholder="Enter your email" required>
-            <button type="submit" id="submit-btn">Get early access</button>
-        </form>
-        
-        <div id="form-message" class="form-message"></div>
-        <p class="trust-text">Simple, practical, and made for real use.</p>
-    </div>
+    <p class="subtitle">
+        The ultimate guide for your <strong>studies, work, and business</strong>.
+        Build websites, apps, and presentations easily.
+    </p>
 
-    <script>
-        const form = document.getElementById('waitlist-form');
-        const messageEl = document.getElementById('form-message');
-        const button = document.getElementById('submit-btn');
+    <p><strong>🚀 testing the idea — join if you are interested:</strong></p>
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const originalBtnText = button.textContent;
-            button.textContent = 'Sending...';
-            button.disabled = true;
-            messageEl.className = 'form-message';
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    messageEl.textContent = "Success! You're on the list.";
-                    messageEl.className = 'form-message success';
-                    form.reset();
-                } else {
-                    const data = await response.json();
-                    if (Object.hasOwn(data, 'errors')) {
-                        messageEl.textContent = data.errors.map(err => err.message).join(', ');
-                    } else {
-                        messageEl.textContent = "Oops! Something went wrong.";
-                    }
-                    messageEl.className = 'form-message error';
-                }
-            } catch (error) {
-                messageEl.textContent = "Oops! There was a network error.";
-                messageEl.className = 'form-message error';
-            } finally {
-                button.textContent = originalBtnText;
-                button.disabled = false;
-            }
+    <form id="form">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Get early access</button>
+    </form>
+
+    <p id="msg" class="message"></p>
+</div>
+
+<script>
+const BIN_ID = "69cfc31b36566621a87715b9";
+const API_KEY = "$2a$10$xgNw51cRCqhEr5dCGjsRHOK3eTHJZUlhDxmmzjoAbv/9RDB20DDb6";
+
+const form = document.getElementById("form");
+const msg = document.getElementById("msg");
+
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("email").value;
+    msg.innerText = "Saving...";
+
+    try {
+        // GET old data
+        const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+            headers: { "X-Master-Key": API_KEY }
         });
-    </script>
+
+        const data = await res.json();
+
+        let emails = data.record.emails || [];
+
+        emails.push({
+            email: email,
+            date: new Date().toISOString()
+        });
+
+        // UPDATE
+        await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Master-Key": API_KEY
+            },
+            body: JSON.stringify({ emails })
+        });
+
+        msg.innerText = "✅ You're on the list!";
+        form.reset();
+
+    } catch (err) {
+        msg.innerText = "❌ Error saving email";
+    }
+});
+</script>
+
 </body>
 </html>
