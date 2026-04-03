@@ -1,216 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Claude in Darija</title>
-    <style>
-        :root {
-            --bg-color: #f7f5f0;
-            --card-bg: #ffffff;
-            --text-main: #111111;
-            --text-muted: #6b7280;
-            --border-color: #e5e7eb;
-            --radius: 16px;
-            --transition: all 0.2s ease;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn Claude in Moroccan Darija</title>
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border-color: #dbe4ee;
+      --accent: #059669;
+      --accent-hover: #047857;
+      --radius: 18px;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
 
-        .card {
-            background-color: var(--card-bg);
-            width: 100%;
-            max-width: 420px;
-            padding: 2.5rem 2rem;
-            border-radius: var(--radius);
-            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
-            text-align: center;
-        }
+    .card {
+      background: var(--card-bg);
+      width: 100%;
+      max-width: 460px;
+      padding: 40px 32px;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+      text-align: center;
+      border: 1px solid #e5e7eb;
+    }
 
-        h1 {
-            font-size: 2rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 0.75rem;
-        }
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
 
-        .subtitle {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            line-height: 1.5;
-        }
+    .highlight {
+      color: var(--accent);
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
+    .subtitle {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
 
-        input[type="email"] {
-            width: 100%;
-            padding: 0.875rem 1.25rem;
-            font-size: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            background-color: #fafafa;
-            color: var(--text-main);
-            outline: none;
-            transition: var(--transition);
-        }
+    .testing-note {
+      font-weight: bold;
+      margin-bottom: 24px;
+    }
 
-        input[type="email"]::placeholder {
-            color: #9ca3af;
-        }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
 
-        input[type="email"]:focus {
-            background-color: #ffffff;
-            border-color: var(--text-main);
-            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
-        }
+    input[type="email"] {
+      width: 100%;
+      padding: 16px;
+      font-size: 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      outline: none;
+    }
 
-        button {
-            width: 100%;
-            padding: 0.875rem 1.25rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #ffffff;
-            background-color: var(--text-main);
-            border: none;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
+    button {
+      width: 100%;
+      padding: 16px;
+      font-size: 1rem;
+      font-weight: bold;
+      color: white;
+      background: var(--accent);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+    }
 
-        button:hover {
-            background-color: #000000;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
+    button:hover {
+      background: var(--accent-hover);
+    }
 
-        button:active {
-            transform: translateY(0);
-        }
-
-        button:disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .trust-text {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 1.25rem;
-        }
-
-        .form-message {
-            margin-top: 1rem;
-            padding: 0.875rem;
-            border-radius: 12px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            display: none;
-            animation: fadeIn 0.3s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .form-message.success {
-            display: block;
-            background-color: #f0fdf4;
-            color: #166534;
-            border: 1px solid #bbf7d0;
-        }
-
-        .form-message.error {
-            display: block;
-            background-color: #fef2f2;
-            color: #991b1b;
-            border: 1px solid #fecaca;
-        }
-    </style>
+    .trust-text {
+      margin-top: 18px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+  </style>
 </head>
 <body>
+  <div class="card">
+    <h1>Learn Claude in <span class="highlight">Moroccan Darija</span> 🇲🇦</h1>
 
-    <div class="card">
-        <h1>Learn Claude in Darija.</h1>
-        <p class="subtitle">Build websites, apps, presentations, and more.</p>
-        
-        <form id="waitlist-form" action="https://formspree.io/f/xzdkvlqp" method="POST">
-            <input type="hidden" name="source" value="claude-darija-landing">
-            <input type="email" name="email" placeholder="Enter your email" required>
-            <button type="submit" id="submit-btn">Get early access</button>
-        </form>
-        
-        <div id="form-message" class="form-message"></div>
-        <p class="trust-text">Simple, practical, and made for real use.</p>
-    </div>
+    <p class="subtitle">
+      The ultimate guide for your <strong>studies, work, and business</strong>.
+      Build websites, apps, and presentations easily.
+    </p>
 
-    <script>
-        const form = document.getElementById('waitlist-form');
-        const messageEl = document.getElementById('form-message');
-        const button = document.getElementById('submit-btn');
+    <p class="testing-note">Testing this idea. Join if you're interested.</p>
 
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const originalBtnText = button.textContent;
-            button.textContent = 'Sending...';
-            button.disabled = true;
-            messageEl.className = 'form-message';
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    messageEl.textContent = "Success! You're on the list.";
-                    messageEl.className = 'form-message success';
-                    form.reset();
-                } else {
-                    const data = await response.json();
-                    if (Object.hasOwn(data, 'errors')) {
-                        messageEl.textContent = data.errors.map(err => err.message).join(', ');
-                    } else {
-                        messageEl.textContent = "Oops! Something went wrong.";
-                    }
-                    messageEl.className = 'form-message error';
-                }
-            } catch (error) {
-                messageEl.textContent = "Oops! There was a network error.";
-                messageEl.className = 'form-message error';
-            } finally {
-                button.textContent = originalBtnText;
-                button.disabled = false;
-            }
-        });
-    </script>
+    <form action="https://formsubmit.co/zaidhsain2@gmail.com" method="POST">
+      <input type="email" name="email" placeholder="Enter your email" required />
+
+      <input type="hidden" name="_subject" value="New waitlist signup" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+
+      <button type="submit">Get early access</button>
+    </form>
+
+    <p class="trust-text">Simple, practical, and made for real use.</p>
+  </div>
 </body>
 </html>
