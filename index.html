@@ -24,7 +24,9 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #f8fafc;
+      background:
+        radial-gradient(circle at top, rgba(5, 150, 105, 0.12), transparent 32%),
+        linear-gradient(180deg, #f3f9f5 0%, #f8fafc 45%, #eef6f1 100%);
       color: var(--text-main);
       min-height: 100vh;
       display: flex;
@@ -36,7 +38,7 @@
     .card {
       background: var(--card-bg);
       width: 100%;
-      max-width: 460px;
+      max-width: 470px;
       padding: 40px 32px;
       border-radius: var(--radius);
       box-shadow: 0 20px 40px rgba(0,0,0,0.08);
@@ -96,6 +98,10 @@
       background: var(--accent-hover);
     }
 
+    .hidden {
+      display: none;
+    }
+
     .trust-text {
       margin-top: 18px;
       font-size: 0.9rem;
@@ -114,12 +120,15 @@
 
     <p class="testing-note">Testing this idea. Join if you're interested.</p>
 
-    <form action="https://formsubmit.co/zaidhsain2@gmail.com" method="POST">
-      <input type="email" name="email" placeholder="Enter your email" required />
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="a53c2ac5-f411-4b1d-a4c3-42f09c59e85e" />
+      <input type="hidden" name="subject" value="New waitlist signup" />
+      <input type="hidden" name="from_name" value="Claude Darija Landing Page" />
+      <input type="hidden" name="redirect" value="https://web3forms.com/success" />
 
-      <input type="hidden" name="_subject" value="New waitlist signup" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
+      <input type="checkbox" name="botcheck" class="hidden" />
+
+      <input type="email" name="email" placeholder="Enter your email" required />
 
       <button type="submit">Get early access</button>
     </form>
