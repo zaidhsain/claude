@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learn Claude in Moroccan Darija</title>
     <style>
         :root {
@@ -11,7 +11,7 @@
             --text-main: #0f172a;
             --text-muted: #4b5563;
             --border-color: #e2e8f0;
-            --accent: #059669; /* Elegant Moroccan Green */
+            --accent: #059669;
             --accent-hover: #047857;
             --radius: 16px;
             --transition: all 0.2s ease;
@@ -65,6 +65,12 @@
             color: var(--text-muted);
             margin-bottom: 2rem;
             line-height: 1.6;
+        }
+
+        .test-text {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
         }
 
         form {
@@ -165,61 +171,82 @@
 
     <div class="card">
         <h1>Learn Claude in <span class="highlight">Moroccan Darija</span> 🇲🇦</h1>
-       <p class="subtitle">
-    The ultimate guide for your <strong>studies, work, and business</strong>. Build websites, apps, and presentations easily.
-</p>
 
-<p style="margin-bottom: 1.5rem; font-weight: 600; color: #0f172a;">
-    🚀 testing the idea — join if you are interested:
-</p>
-        
-        <form id="waitlist-form" action="https://formspree.io/f/xzdkvlqp" method="POST">
-            <input type="hidden" name="source" value="claude-darija-landing">
-            <input type="email" name="email" placeholder="Enter your email" required>
+        <p class="subtitle">
+            The ultimate guide for your <strong>studies, work, and business</strong>.
+            Build websites, apps, and presentations easily.
+        </p>
+
+        <p class="test-text">
+            🚀 testing the idea — join if you are interested:
+        </p>
+
+        <form id="waitlist-form">
+            <input type="email" id="email" name="email" placeholder="Enter your email" required />
             <button type="submit" id="submit-btn">Get early access</button>
         </form>
-        
+
         <div id="form-message" class="form-message"></div>
         <p class="trust-text">Simple, practical, and made for real use.</p>
     </div>
 
     <script>
         const form = document.getElementById('waitlist-form');
+        const emailInput = document.getElementById('email');
         const messageEl = document.getElementById('form-message');
         const button = document.getElementById('submit-btn');
 
-        form.addEventListener('submit', async (e) => {
+        function getStoredEmails() {
+            return JSON.parse(localStorage.getItem('waitlistEmails')) || [];
+        }
+
+        function saveEmail(email) {
+            const storedEmails = getStoredEmails();
+
+            const alreadyExists = storedEmails.some(
+                item => item.email.toLowerCase() === email.toLowerCase()
+            );
+
+            if (alreadyExists) {
+                return { success: false, message: "This email is already registered." };
+            }
+
+            storedEmails.push({
+                email: email,
+                createdAt: new Date().toISOString()
+            });
+
+            localStorage.setItem('waitlistEmails', JSON.stringify(storedEmails));
+            return { success: true, message: "Success! You're on the list." };
+        }
+
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             const originalBtnText = button.textContent;
-            button.textContent = 'Sending...';
+            button.textContent = 'Saving...';
             button.disabled = true;
             messageEl.className = 'form-message';
-            
+
             try {
-                const response = await fetch(form.action, {
-                    method: 'POST',
-                    body: new FormData(form),
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-                
-                if (response.ok) {
-                    messageEl.textContent = "Success! You're on the list.";
+                const email = emailInput.value.trim();
+
+                if (!email) {
+                    throw new Error("Please enter a valid email.");
+                }
+
+                const result = saveEmail(email);
+
+                if (result.success) {
+                    messageEl.textContent = result.message;
                     messageEl.className = 'form-message success';
                     form.reset();
                 } else {
-                    const data = await response.json();
-                    if (Object.hasOwn(data, 'errors')) {
-                        messageEl.textContent = data.errors.map(err => err.message).join(', ');
-                    } else {
-                        messageEl.textContent = "Oops! Something went wrong.";
-                    }
+                    messageEl.textContent = result.message;
                     messageEl.className = 'form-message error';
                 }
             } catch (error) {
-                messageEl.textContent = "Oops! There was a network error.";
+                messageEl.textContent = error.message || "Oops! Something went wrong.";
                 messageEl.className = 'form-message error';
             } finally {
                 button.textContent = originalBtnText;
